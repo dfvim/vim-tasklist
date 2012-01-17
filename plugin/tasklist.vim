@@ -116,7 +116,7 @@ endif
 "------------------------------------------------------------------------------
 if !exists('g:tlTokenList')
 "   default list of tokens
-    let g:tlTokenList = ["FIXME", "TODO", "XXX"]
+    let g:tlTokenList = ["FIXME", "TODO", "XXX", "NOTE", "BUG", "CHANGED", "OPTIMIZE"]
 endif
 
 " Remember position
