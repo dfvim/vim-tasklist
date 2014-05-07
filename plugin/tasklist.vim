@@ -368,13 +368,14 @@ endfunction
 
 " Command
 command! TaskList call s:TaskList()
+command! TaskListToggle call s:TaskListToggle()
 
 " Quick-and-dirty toggle soluton.
 " TODO: perfect simply solution: setup directory for [text_buffer, tasklist_buffer]
 
 " Function: open task list for toggle {{{1
 let s:is_tasklist_open = 0
-function! s:OpenTaskList()
+function! s:TaskListOpen()
     let has_task_info = 0
     let has_task_info = s:TaskList()
     if (has_task_info == -1)
@@ -386,7 +387,7 @@ endfunction
 " }}}
 
 " Function: open task list for toggle {{{1
-function! s:CloseTaskList()
+function! s:TaskListClose()
     let tasklist_bufnr = bufnr('-TaskList_')
     if (bufloaded(tasklist_bufnr))
         " tasklist buffer is active.
@@ -404,19 +405,17 @@ endfunction
 " }}}
 
 " Function: Support toggle {{{1
-function! s:ToggleTaskList()
+function! s:TaskListToggle()
     if (s:is_tasklist_open == 0)
-        call s:OpenTaskList()
+        call s:TaskListOpen()
     else
-        call s:CloseTaskList()
+        call s:TaskListClose()
     endif
 endfunction
 " }}}
 
-" Toggle Command
-command! ToggleTaskList call s:ToggleTaskList()
-
-" Key map to Toggle Command
-nnoremap <unique> <script> <Plug>ToggleTaskList :ToggleTaskList<CR>
+" Key map to Command
+nnoremap <unique> <script> <Plug>TaskList :TaskList<CR>
+nnoremap <unique> <script> <Plug>TaskListToggle :TaskListToggle<CR>
 
 " vim:fdm=marker:tw=75:ff=unix:
