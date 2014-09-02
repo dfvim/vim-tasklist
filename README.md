@@ -27,6 +27,56 @@ Bundle 'jalcine/TaskList.vim'
 
 You're done.
 
+## Usage
+Start the script with the mapped key, a new window appears
+with the matches found, moving around the window will also
+update the position of the current document.
+
+The following keys are mapped to the results window:
+
+q - Quit, and restore original cursor position.
+
+e - Exit, and keep results window open note that
+movements on the result window will no longer be
+updated.
+
+```
+<cr>
+```
+- Quit and place the cursor on the selected line.
+
+## User Options
+* This is the default key map to view the task list.
+
+	```
+	map <leader>t <Plug>TaskList
+	```
+
+* This is specifies the position of the window to be opened. By
+default it will open at on top.
+0 = Open on top,
+1 = Open on the bottom
+
+	```
+	g:tlWindowPosition = 0
+	```
+
+* This is the list of tokens to search for default is
+'FIXME TODO XXX'. The results are groupped and displayed in the
+order that they appear.
+
+	```
+	g:tlTokenList = ['FIXME', 'TODO', 'XXX']
+	```
+
+* If this is set to 1 then the script will try to get back to the
+position where it last was closed. By default it will find the line
+closest to the current cursor position.
+
+	```
+	g:tlRememberPosition = 0
+	```
+
 ## TODO:
 **TaskList.vim** has a lot of potential to improve functionality.
 
